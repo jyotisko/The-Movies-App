@@ -12,10 +12,14 @@ class MovieView {
           <a href="${data.homepage}" target="_blank">Visit Official Webpage</a>
         </div>
       `;
+
+    let path;
+    data.posterPath == null ? path = `https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png` : path = `https://image.tmdb.org/t/p/w500/${data.posterPath}`;
+
     const markup = `
 
       <div class="poster-image-hidden">
-        <img src="https://image.tmdb.org/t/p/w500/${data.posterPath}" alt="Poster">
+        <img src="${path}" alt="Poster">
       </div>
 
       <div class="brief-movie-info">
@@ -33,7 +37,7 @@ class MovieView {
         <div class="production-companies">
           <span class="red">Producers:</span>
           <br>
-          ${data.productionCompanies.join('<br>')}
+          ${data.productionCompanies.length > 0 ? data.productionCompanies.join('<br>') : 'Data not available'}
         </div>
         ${content}
         <div class="imdb">

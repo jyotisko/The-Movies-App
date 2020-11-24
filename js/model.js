@@ -8,6 +8,7 @@ export const moviesInfo = {
 
 export const getDataHomePage = async function () {
   try {
+
     if (moviesInfo.page === 0) moviesInfo.page = 1;
     if (moviesInfo.totalPages < moviesInfo.page) moviesInfo.page = moviesInfo.total_pages;
 
@@ -44,7 +45,7 @@ export const getMovieData = async function (id) {
 
     const productionCompanies = [];
     data.production_companies.forEach(company => productionCompanies.push(company.name));
-    console.log(data.homepage);
+
     return {
       language: data.original_language,
       title: data.original_title,
@@ -61,4 +62,32 @@ export const getMovieData = async function (id) {
   } catch (err) {
     console.error(err);
   }
+}
+
+export const getSearchResults = async function (query) {
+
+  if (moviesInfo.page === 0) moviesInfo.page = 1;
+  if (moviesInfo.totalPages < moviesInfo.page) moviesInfo.page = moviesInfo.total_pages;
+
+  const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=ae5a24906bcfb97174e76a13e2d54bcb&query=${query}&page=${moviesInfo.page}`);
+  const data = await response.json();
+
+  moviesInfo.data = [];
+  const movies = data.results;
+
+  movies.forEach(movie => {
+    const data = {
+      id: movie.id,
+      posterPath: movie.poster_path,
+      tagLine: movie.overview,
+      name: movie.title,
+      language: movie.original_language,
+      releaseDate: movie.release_date,
+      rating: movie.vote_average,
+    };
+
+    moviesInfo.totalPages = movie.total_pages;
+    moviesInfo.data.push(data);
+  });
+
 }

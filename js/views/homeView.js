@@ -2,17 +2,16 @@ const container = document.querySelector('.section-2__container');
 
 class HomeView {
 
-  constructor() {
-  }
-
   _renderHomePageData(moviesData) {
     container.innerHTML = '';
 
     moviesData.forEach(movie => {
+      let path;
+      movie.posterPath == null ? path = `https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png` : path = `https://image.tmdb.org/t/p/w500/${movie.posterPath}`;
       const markup = `
           <a href="#${movie.id}"><div class="movie__conatiner" data-id="${movie.id}">
             <div class="movie-image">
-              <div class="poster"><img src="https://image.tmdb.org/t/p/w500/${movie.posterPath}" alt="Poster" class="poster-img"></div>
+              <div class="poster"><img src="${path}" alt="Poster" class="poster-img"></div>
             </div>
             <div class="quick-info">
               <div class="movie-name">${movie.name}</div>

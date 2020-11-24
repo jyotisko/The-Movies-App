@@ -104,24 +104,38 @@ a {
   cursor: pointer;
   grid-template-columns: 40% 60%;
   border: 1px solid #ffffff;
+  overflow: hidden;
+}
+
+.movie__conatiner:hover img.poster-img {
+  transform: scale(1.1);
 }
 
 .movie-image {
-  height: 100%;
-  width: 100%;
+  height: 40rem;
+  width: 35rem;
   overflow: hidden;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background-color: beige;
 }
 
 .poster {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 img.poster-img {
   height: 100%;
   width: 95%;
+  overflow: hidden;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
 }
 
 .quick-info {
@@ -216,7 +230,7 @@ footer {
   width: 100%;
   display: grid;
   align-items: center;
-  grid-template-rows: 15% 15% 5% 5% 5% 10% 10% 5%;
+  grid-template-rows: 15% 25% 5% 5% 5% 10% 10% 5%;
 }
 
 .brief-movie-info .movie-name {
