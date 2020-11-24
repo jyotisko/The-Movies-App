@@ -9,7 +9,7 @@ const getDataAndRenderData = async function () {
   changePageForHomePageData();
 }
 
-const changePage = async function (e) {
+const changeHomePage = async function (e) {
   e.target.classList.contains('prev') ? model.moviesInfo.page-- : model.moviesInfo.page++;
   await model.getDataHomePage();
   homeView._renderHomePageData(model.moviesInfo.data);
@@ -17,7 +17,7 @@ const changePage = async function (e) {
 
 const changePageForHomePageData = function () {
   const paginationBtn = document.querySelectorAll('.pagination-btn');
-  paginationBtn.forEach(btn => btn.addEventListener('click', changePage));
+  paginationBtn.forEach(btn => btn.addEventListener('click', changeHomePage));
 }
 
 const getDataAndRenderIt = async function (id) {
@@ -45,11 +45,16 @@ const changePageForQueryData = async function (query) {
 }
 
 const getQueryAndSetData = async function () {
+
+  model.moviesInfo.data = [];
+  model.moviesInfo.totalPages = undefined;
+  model.moviesInfo.page = 1;
+
   const query = document.querySelector('.movie-name').value;
   if (!query) return;
   await model.getSearchResults(query);
   searchView._renderData(model.moviesInfo.data);
-  document.querySelectorAll('.pagination-btn').forEach(btn => btn.removeEventListener('click', changePage))
+  document.querySelectorAll('.pagination-btn').forEach(btn => btn.removeEventListener('click', changeHomePage))
   changePageForQueryData(query);
 }
 
