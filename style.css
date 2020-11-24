@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/***********************/
+/* Section 1 */
+
+#section1 {
+  height: 15vh;
+  width: 100%;
+  background-color: #1d3557;
+}
+
+.section-1__container {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+}
+
+.section-1__container .logo h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.section-1__container .search-bar {
+  width: 25vw;
+  height: 5.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar input {
+  height: 65%;
+  padding: 0.3rem;
+  outline: none;
+  font-size: 2rem;
+  width: 90%;
+}
+
+.search-bar button {
+  height: 65%;
+  outline: none;
+  font-size: 2.1rem;
+  cursor: pointer;
+  width: 10%;
+  border: none;
+  color: #ffffff;
+  background-color: #6d6875;
+}
+
+/***********************/
+/* Section 2 */
+
+#section2 {
+  /* height: 83vh; */
+  min-height: 83vh;
+  max-height: auto;
+  width: 100%;
+  background-color: #242424;
+}
+
+.section-2__container {
+  height: 95%;
+  width: 98%;
+  margin: 0 auto;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1.5rem;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.section-2__container .movie__conatiner {
+  height: 90%;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: beige;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  grid-template-columns: 40% 60%;
+  border: 1px solid #ffffff;
+}
+
+.movie-image {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.poster {
+  height: 100%;
+  width: 100%;
+}
+
+img.poster-img {
+  height: 100%;
+  width: 95%;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.quick-info {
+  height: 90%;
+  width: 100%;
+  margin-left: 0%;
+  display: grid;
+  align-items: center;
+  /* grid-template-rows: 25% 20% 10% 10% 35%;  */
+  grid-template-rows: repeat(5, auto);
+}
+
+.quick-info .movie-name {
+  font-size: 2.5rem;
+  font-weight: 500;
+  text-decoration: underline solid #ff0000;
+}
+
+.quick-info .tag-line {
+  font-size: 1.5rem;
+}
+
+.quick-info .release {
+  font-size: 1.3rem;
+  color: #006d77;
+}
+
+.quick-info .language {
+  font-size: 1.4rem;
+}
+
+.quick-info .ratings {
+  font-size: 1.4rem;
+}
+
+.buttons {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.buttons .pagination-btn {
+  height: 100%;
+  cursor: pointer;
+  width: 5%;
+  font-size: 2rem;
+}
+
+/***********************/
+/* Footer Attribution */
+
+footer {
+  height: 2vh;
+}
+
+/***********************/
+/* Hidden Section */
+
+#hidden {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.9);
+  color: #ffffff;
+  display: none;
+}
+
+.hidden-section__container {
+  margin: 0 auto;
+  width: 98%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-content: center;
+  grid-gap: 2rem;
+  align-items: center;
+}
+
+.poster-image-hidden,
+.poster-image-hidden img {
+  height: 100%;
+  width: 100%;
+}
+
+.brief-movie-info {
+  height: 90%;
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-rows: 15% 15% 5% 5% 5% 10% 10% 5%;
+}
+
+.brief-movie-info .movie-name {
+  font-size: 6rem;
+  font-weight: 500;
+  text-decoration: underline solid #ff0000;
+}
+
+.brief-movie-info .tagline-all {
+  font-size: 2rem;
+}
+
+.red {
+  color: #ff0000;
+}
+
+.brief-movie-info .release-date {
+  font-size: 1.8rem;
+}
+
+.brief-movie-info .status {
+  font-size: 2rem;
+}
+
+.brief-movie-info .language {
+  font-size: 2rem;
+}
+
+.brief-movie-info .runtime {
+  font-size: 2rem;
+}
+
+.brief-movie-info .production-companies {
+  font-size: 2rem;
+}
+
+.brief-movie-info .production-companies h5 {
+  font-weight: 500;
+}
+
+.brief-movie-info .homepage {
+  margin-top: 7rem;
+}
+
+.brief-movie-info a {
+  font-size: 2rem;
+  color: #ff0000;
+}
+
+.close-btn {
+  font-size: 4rem;
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  cursor: pointer;
+}

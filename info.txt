@@ -1,0 +1,14 @@
+Key:
+	ae5a24906bcfb97174e76a13e2d54bcb
+
+Movies search by id:
+	https://api.themoviedb.org/3/movie/76341?api_key=ae5a24906bcfb97174e76a13e2d54bcb
+
+Poster search by poster path:
+	https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg
+
+Search for movie by name:
+	https://api.themoviedb.org/3/search/movie?api_key=ae5a24906bcfb97174e76a13e2d54bcb&query=Jack+Reacher
+
+Top Rated:
+	https://api.themoviedb.org/3/movie/top_rated?api_key=ae5a24906bcfb97174e76a13e2d54bcb&language=en-US&page=1
