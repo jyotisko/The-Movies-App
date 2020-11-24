@@ -13,7 +13,6 @@ const changePage = async function (e) {
   e.target.classList.contains('prev') ? model.moviesInfo.page-- : model.moviesInfo.page++;
   await model.getDataHomePage();
   homeView._renderHomePageData(model.moviesInfo.data);
-  console.log('Hello');
 }
 
 const changePageForHomePageData = function () {
