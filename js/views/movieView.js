@@ -21,14 +21,14 @@ class MovieView {
         <div class="movie-name">${data.title}</div>
           <div class="tagline-all">
             <span class="red">About:</span> <br>
-            ${data.tagLine}
+            ${data.tagLine === '' ? 'No description available :(' : data.tagLine}
           </div>
         <div class="release-date">
-          <span class="red">Release Date: </span>${data.releaseDate}
+          <span class="red">Release Date: </span>${data.releaseDate === '' ? 'Not available' : data.releaseDate}
         </div>
         <div class="status"><span class="red">Status: </span>${data.status}</div>
         <div class="language"><span class="red">Language:</span> ${data.language === 'en' ? 'English' : data.language.toUpperCase()}</div>
-        <div class="runtime"><span class="red">Total Runtime: </span>${data.runtime} minutes</div>
+        <div class="runtime"><span class="red">Total Runtime: </span>${data.runtime ? `${data.runtime} minutes` : 'Not avalable!'}</div>
         <div class="production-companies">
           <span class="red">Producers:</span>
           <br>

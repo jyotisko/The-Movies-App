@@ -16,7 +16,7 @@ class Helper {
   }
 
   closeSpinner() {
-    document.querySelector('.spinner').style.display = 'none';
+    document.querySelectorAll('.spinner').forEach(spinner => spinner.style.display = 'none')
   }
 }
 

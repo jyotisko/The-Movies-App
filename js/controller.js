@@ -4,10 +4,11 @@ import movieView from './views/movieView.js';
 import searchView from './views/searchView.js';
 import helper from './helper.js';
 
+const parentElementSection2 = document.querySelector('#section2');
+
 const getDataAndRenderData = async function () {
   try {
-    const parentElement = document.querySelector('#section2');
-    helper.loadSpinner(parentElement);
+    helper.loadSpinner(parentElementSection2);
     await model.getDataHomePage();
     homeView._renderHomePageData(model.moviesInfo.data);
     changePageForHomePageData();
@@ -20,9 +21,11 @@ const getDataAndRenderData = async function () {
 
 const changeHomePage = async function (e) {
   try {
+    helper.loadSpinner(parentElementSection2);
     e.target.classList.contains('prev') ? model.moviesInfo.page-- : model.moviesInfo.page++;
     await model.getDataHomePage();
     homeView._renderHomePageData(model.moviesInfo.data);
+    helper.closeSpinner();
   } catch (err) {
     console.log(err);
     alert(`Something went wrong:\n${err}`);
@@ -59,8 +62,10 @@ const changePageForQueryData = async function (query) {
     const paginationBtn = document.querySelectorAll('.pagination-btn');
     paginationBtn.forEach(btn => btn.addEventListener('click', async function (e) {
       e.target.classList.contains('prev') ? model.moviesInfo.page-- : model.moviesInfo.page++;
+      helper.loadSpinner(parentElementSection2);
       await model.getSearchResults(query);
-      homeView._renderHomePageData(model.moviesInfo.data)
+      homeView._renderHomePageData(model.moviesInfo.data);
+      helper.closeSpinner();
     }));
   } catch (err) {
     console.log(err);
@@ -77,9 +82,11 @@ const getQueryAndSetData = async function () {
 
     const query = document.querySelector('.movie-name').value;
     if (!query) return;
+    helper.loadSpinner(parentElementSection2);
     await model.getSearchResults(query);
     searchView._renderData(model.moviesInfo.data);
-    document.querySelectorAll('.pagination-btn').forEach(btn => btn.removeEventListener('click', changeHomePage))
+    document.querySelectorAll('.pagination-btn').forEach(btn => btn.removeEventListener('click', changeHomePage));
+    helper.closeSpinner();
     changePageForQueryData(query);
   }
   catch (err) {
