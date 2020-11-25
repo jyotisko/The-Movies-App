@@ -2,12 +2,16 @@ import * as model from './model.js';
 import homeView from './views/homeView.js';
 import movieView from './views/movieView.js';
 import searchView from './views/searchView.js';
+import helper from './helper.js';
 
 const getDataAndRenderData = async function () {
   try {
+    const parentElement = document.querySelector('#section2');
+    helper.loadSpinner(parentElement);
     await model.getDataHomePage();
     homeView._renderHomePageData(model.moviesInfo.data);
     changePageForHomePageData();
+    helper.closeSpinner();
   } catch (err) {
     console.log(err);
     alert(`Something went wrong:\n${err}`);

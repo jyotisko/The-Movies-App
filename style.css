@@ -301,3 +301,25 @@ footer {
   fill: #ffffff;
 }
 
+.spinner {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner svg {
+  animation: rotate 3s linear infinite;
+  fill: #ff8324;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
