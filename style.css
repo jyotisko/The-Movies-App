@@ -171,25 +171,36 @@ img.poster-img {
 }
 
 .buttons {
-  height: 10%;
+  height: 10vh;
   width: 100%;
+  background-color: #242424;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
 .buttons .pagination-btn {
-  height: 100%;
+  height: 50%;
   cursor: pointer;
-  width: 5%;
+  width: 7%;
   font-size: 2rem;
+  position: relative;
+}
+
+.pagination-btn svg {
+  /* position: absolute; */
+  height: 100%;
+  width: 100%;
 }
 
 /***********************/
 /* Footer Attribution */
 
 footer {
+  width: 100%;
   height: 2vh;
+  text-align: center;
+  margin: auto 0;
 }
 
 /***********************/
@@ -279,10 +290,14 @@ footer {
   color: #ff0000;
 }
 
-.close-btn {
+.close-btn svg {
   font-size: 4rem;
   position: absolute;
-  top: 2%;
+  top: 4%;
+  height: 50px;
+  width: 50px;
   right: 2%;
   cursor: pointer;
+  fill: #ffffff;
 }
+
