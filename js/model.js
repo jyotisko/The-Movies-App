@@ -80,6 +80,8 @@ export const getSearchResults = async function (query) {
     moviesInfo.data = [];
     const movies = data.results;
 
+    if (data.results.length === 0) throw new Error('No search results found!');
+
     movies.forEach(movie => {
       const data = {
         id: movie.id,
