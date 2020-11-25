@@ -4,17 +4,12 @@ const parentContainer = document.querySelector('.hidden-section__container')
 class MovieView {
 
   _renderData(data) {
-    parentContainer.innerHTML = '';
-    let content;
-    if (data.homepage === '') content = '';
-    if (data.homepage !== '') content = `
-        <div class="homepage">
-          <a href="${data.homepage}" target="_blank">Visit Official Webpage</a>
-        </div>
-      `;
+    let homepage, path, imdb;
 
-    let path;
-    data.posterPath == null ? path = `https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png` : path = `https://image.tmdb.org/t/p/w500/${data.posterPath}`;
+    parentContainer.innerHTML = '';
+    (!data.homepage || data.homepage === '') ? homepage = '' : homepage = `<div class="homepage"><a href="${data.homepage}" target="_blank">Visit Official Webpage</a></div>`;
+    !data.posterPath ? path = `https://www.brdtex.com/wp-content/uploads/2019/09/no-image.png` : path = `https://image.tmdb.org/t/p/w500/${data.posterPath}`;
+    (!data.imdb || data.imdb === '') ? imdb = '' : imdb = `<div class="imdb"><a href="https://www.imdb.com/title/${data.imdb}/" class="imdb-link" target="_blank">View On IMDb</a></div>`;
 
     const markup = `
 
@@ -39,13 +34,10 @@ class MovieView {
           <br>
           ${data.productionCompanies.length > 0 ? data.productionCompanies.join('<br>') : 'Data not available'}
         </div>
-        ${content}
-        <div class="imdb">
-          <a href="https://www.imdb.com/title/${data.imdb}/" class="imdb-link" target="_blank">View On IMDb</a>
-        </div>
+        ${homepage}
+        ${imdb}
       </div>
-
-  `;
+    `;
 
     parentContainer.insertAdjacentHTML('afterbegin', markup);
     document.querySelector('#hidden').style.display = 'grid';

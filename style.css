@@ -85,7 +85,6 @@ html {
   align-items: center;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1.5rem;
-  grid-template-rows: repeat(3, 1fr);
 }
 
 a {

@@ -36,6 +36,7 @@ export const getDataHomePage = async function () {
 
   } catch (err) {
     console.log(err);
+    throw new Error(err);
   }
 };
 
@@ -63,32 +64,39 @@ export const getMovieData = async function (id) {
 
   } catch (err) {
     console.error(err);
+    throw new Error(err);
   }
 }
 
 export const getSearchResults = async function (query) {
 
-  if (moviesInfo.page === 0) moviesInfo.page = 1;
-  if (moviesInfo.totalPages <= moviesInfo.page) moviesInfo.page = +moviesInfo.totalPages;
+  try {
+    if (moviesInfo.page === 0) moviesInfo.page = 1;
+    if (moviesInfo.totalPages <= moviesInfo.page) moviesInfo.page = +moviesInfo.totalPages;
 
-  const response = await fetch(`${COMMON_API_URL}search/movie?api_key=ae5a24906bcfb97174e76a13e2d54bcb&query=${query}&page=${moviesInfo.page}`);
-  const data = await response.json();
+    const response = await fetch(`${COMMON_API_URL}search/movie?api_key=ae5a24906bcfb97174e76a13e2d54bcb&query=${query}&page=${moviesInfo.page}`);
+    const data = await response.json();
 
-  moviesInfo.data = [];
-  const movies = data.results;
+    moviesInfo.data = [];
+    const movies = data.results;
 
-  movies.forEach(movie => {
-    const data = {
-      id: movie.id,
-      posterPath: movie.poster_path,
-      tagLine: movie.overview,
-      name: movie.title,
-      language: movie.original_language,
-      releaseDate: movie.release_date,
-      rating: movie.vote_average,
-    };
+    movies.forEach(movie => {
+      const data = {
+        id: movie.id,
+        posterPath: movie.poster_path,
+        tagLine: movie.overview,
+        name: movie.title,
+        language: movie.original_language,
+        releaseDate: movie.release_date,
+        rating: movie.vote_average,
+      };
 
-    moviesInfo.data.push(data);
-  });
-  moviesInfo.totalPages = data.total_pages;
+      moviesInfo.data.push(data);
+    });
+    moviesInfo.totalPages = data.total_pages;
+  }
+  catch (err) {
+    console.log(err);
+    throw new Error(err);
+  }
 }

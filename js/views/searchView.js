@@ -25,7 +25,7 @@ class searchView {
           </div></a>
       `;
 
-      container.insertAdjacentHTML('afterbegin', markup);
+      container.insertAdjacentHTML('beforeend', markup);
     });
   }
 
