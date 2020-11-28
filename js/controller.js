@@ -3,14 +3,22 @@ import homeView from './views/homeView.js';
 import movieView from './views/movieView.js';
 import searchView from './views/searchView.js';
 import helper from './helper.js';
+import btnView from './views/btnView.js';
 
 const parentElementSection2 = document.querySelector('#section2');
+
+const manageBtns = function () {
+  btnView.showAllBtn();
+  if (model.moviesInfo.page === 1) btnView.hidePrevBtn();
+  if (model.moviesInfo.totalPages === model.moviesInfo.page) btnView.hideNextBtn();
+}
 
 const getDataAndRenderData = async function () {
   try {
     helper.loadSpinner(parentElementSection2);
     await model.getDataHomePage();
     homeView._renderHomePageData(model.moviesInfo.data);
+    manageBtns();
     changePageForHomePageData();
     helper.closeSpinner();
   } catch (err) {
@@ -25,6 +33,9 @@ const changeHomePage = async function (e) {
     e.target.classList.contains('prev') ? model.moviesInfo.page-- : model.moviesInfo.page++;
     await model.getDataHomePage();
     homeView._renderHomePageData(model.moviesInfo.data);
+
+    manageBtns();
+
     helper.closeSpinner();
   } catch (err) {
     console.log(err);
@@ -66,6 +77,7 @@ const changePageForQueryData = async function (query) {
       await model.getSearchResults(query);
       homeView._renderHomePageData(model.moviesInfo.data);
       helper.closeSpinner();
+      manageBtns();
     }));
   } catch (err) {
     console.log(err);
@@ -76,17 +88,21 @@ const changePageForQueryData = async function (query) {
 const getQueryAndSetData = async function () {
 
   try {
+
     model.moviesInfo.data = [];
     model.moviesInfo.totalPages = undefined;
     model.moviesInfo.page = 1;
 
     const query = document.querySelector('.movie-name').value;
     if (!query) return;
+    helper.clearMoviesContainer();
     helper.loadSpinner(parentElementSection2);
     await model.getSearchResults(query);
     searchView._renderData(model.moviesInfo.data);
     document.querySelectorAll('.pagination-btn').forEach(btn => btn.removeEventListener('click', changeHomePage));
     helper.closeSpinner();
+    console.log(model.moviesInfo);
+    manageBtns();
     changePageForQueryData(query);
   }
   catch (err) {

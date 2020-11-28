@@ -1,5 +1,4 @@
-import { STARTING_PAGE } from './config.js';
-import { COMMON_API_URL } from './config.js';
+import { STARTING_PAGE, COMMON_API_URL, API_KEY } from './config.js';
 
 export const moviesInfo = {
   page: STARTING_PAGE,
@@ -13,7 +12,7 @@ export const getDataHomePage = async function () {
     if (moviesInfo.page === 0) moviesInfo.page = 1;
     if (moviesInfo.totalPages <= moviesInfo.page) moviesInfo.page = +moviesInfo.totalPages - 1;
 
-    const response = await fetch(`${COMMON_API_URL}movie/top_rated?api_key=ae5a24906bcfb97174e76a13e2d54bcb&page=${moviesInfo.page}`);
+    const response = await fetch(`${COMMON_API_URL}movie/top_rated?api_key=${API_KEY}&page=${moviesInfo.page}`);
     const data = await response.json();
 
     const movies = data.results;
@@ -43,7 +42,7 @@ export const getDataHomePage = async function () {
 export const getMovieData = async function (id) {
 
   try {
-    const response = await fetch(`${COMMON_API_URL}movie/${id}?api_key=ae5a24906bcfb97174e76a13e2d54bcb`);
+    const response = await fetch(`${COMMON_API_URL}movie/${id}?api_key=${API_KEY}`);
     const data = await response.json();
 
     const productionCompanies = [];
@@ -74,7 +73,7 @@ export const getSearchResults = async function (query) {
     if (moviesInfo.page === 0) moviesInfo.page = 1;
     if (moviesInfo.totalPages <= moviesInfo.page) moviesInfo.page = +moviesInfo.totalPages;
 
-    const response = await fetch(`${COMMON_API_URL}search/movie?api_key=ae5a24906bcfb97174e76a13e2d54bcb&query=${query}&page=${moviesInfo.page}`);
+    const response = await fetch(`${COMMON_API_URL}search/movie?api_key=${API_KEY}&query=${query}&page=${moviesInfo.page}`);
     const data = await response.json();
 
     moviesInfo.data = [];

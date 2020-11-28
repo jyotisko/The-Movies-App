@@ -211,6 +211,10 @@ img.poster-img {
   width: 100%;
 }
 
+.pagination-btn.hide-btn {
+  pointer-events: none;
+  opacity: 0;
+}
 /***********************/
 /* Footer Attribution */
 

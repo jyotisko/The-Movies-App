@@ -12,3 +12,15 @@ Search for movie by name:
 
 Top Rated:
 	https://api.themoviedb.org/3/movie/top_rated?api_key=ae5a24906bcfb97174e76a13e2d54bcb&language=en-US&page=1
+
+
+Main features:
+1. Display Top Rated Movies at home screen. 👍👍
+2. Check for hashchange event and show the relavent movie data based on the hashchange. 👍👍
+3. Custom Spinner. 👍👍
+4. Search Facility. 👍👍
+5. Pagination. 👍👍
+
+Side Features:
+1. Bookmarks. 👎👎
+2. Responsiveness. 👎👎

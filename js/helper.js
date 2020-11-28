@@ -18,6 +18,10 @@ class Helper {
   closeSpinner() {
     document.querySelectorAll('.spinner').forEach(spinner => spinner.style.display = 'none')
   }
+
+  clearMoviesContainer() {
+    document.querySelector('.section-2__container').innerHTML = '';
+  }
 }
 
 export default new Helper();
