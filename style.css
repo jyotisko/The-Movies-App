@@ -353,3 +353,58 @@ footer {
   }
 }
 
+@media screen and (max-width: 1648px) { 
+
+  .movie__conatiner:hover img.poster-img {
+    transform: scale(1.05);
+  }
+  
+  .movie-image {
+    height: 35rem;
+    width: 100%;
+  }
+
+  .search-bar input {
+    width: 200%;
+  }
+
+  .search-bar button {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1115px) { 
+
+  html {
+    font-size: 50%;
+  }
+
+  .search-bar input {
+    width: 150rem;
+  }
+
+  .search-bar button {
+    width: 30%;
+  }
+
+  .section-2__container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .quick-info .movie-name {
+    font-size: 2rem;
+  }
+
+  .section-1__container .logo h1 {
+    font-size: 2rem;
+  }
+
+  .buttons .pagination-btn {
+    height: 40%;
+    cursor: pointer;
+    width: 20%;
+    font-size: 2rem;
+    position: relative;
+  }
+}
+
