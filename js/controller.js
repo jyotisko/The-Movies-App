@@ -1,3 +1,5 @@
+console.log('Application Started! By the way, why are you looking at the console 😡😡😡.');
+
 import * as model from './model.js';
 import homeView from './views/homeView.js';
 import movieView from './views/movieView.js';
@@ -39,7 +41,7 @@ const changeHomePage = async function (e) {
 
     helper.closeSpinner();
   } catch (err) {
-    console.log(err);
+    helper.closeSpinner();
     alert(`Something went wrong:\n${err}`);
   }
 }
@@ -54,7 +56,6 @@ const getDataAndRenderIt = async function (id) {
     const data = await model.getMovieData(id);
     movieView._renderData(data);
   } catch (err) {
-    console.log(err);
     alert(`Something went wrong:\n${err}`);
   }
 };
@@ -107,6 +108,8 @@ const getQueryAndSetData = async function () {
     changePageForQueryData(query);
   }
   catch (err) {
+    helper.closeSpinner();
+    btnView.hideNextBtn();
     alert(err);
   }
 }

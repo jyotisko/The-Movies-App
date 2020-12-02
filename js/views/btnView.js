@@ -24,7 +24,6 @@ class BtnView {
       const element = btn.closest('.pagination-btn');
       element.style.opacity = 0;
       element.style.pointerEvents = 'none';
-      console.log('hello');
     });
   }
 

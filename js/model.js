@@ -34,7 +34,6 @@ export const getDataHomePage = async function () {
     moviesInfo.totalPages = data.total_pages;
 
   } catch (err) {
-    console.log(err);
     throw new Error(err);
   }
 };
@@ -62,7 +61,6 @@ export const getMovieData = async function (id) {
     }
 
   } catch (err) {
-    console.error(err);
     throw new Error(err);
   }
 }
@@ -97,7 +95,6 @@ export const getSearchResults = async function (query) {
     moviesInfo.totalPages = data.total_pages;
   }
   catch (err) {
-    console.log(err);
     throw new Error(err);
   }
 }
